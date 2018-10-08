@@ -1,4 +1,4 @@
-package com.example.rootchecker;
+package com.neki.rootchecker;
 
 
 import android.os.Build;
