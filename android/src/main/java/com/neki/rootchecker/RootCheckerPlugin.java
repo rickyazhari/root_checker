@@ -36,13 +36,13 @@ public class RootCheckerPlugin implements MethodCallHandler {
   @Override
   public void onMethodCall(MethodCall call, Result result) {
     if (call.method.equals("isDeviceRooted")) {
-      checkRootDevice(result);
+      checkHpBodong(result);
     } else {
       result.notImplemented();
     }
   }
 
-  private void checkRootDevice(Result result){
+  private void checkHpBodong(Result result){
     result.success(
       isPathExist("su")
       || isSUExist()
