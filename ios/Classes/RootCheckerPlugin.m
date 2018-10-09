@@ -11,14 +11,14 @@
 
 - (void)handleMethodCall:(FlutterMethodCall*)call result:(FlutterResult)result {
   if ([@"isDeviceRooted" isEqualToString:call.method]) {
-      result(isJailBroken);
+      result(ishpBodong);
   } else {
     result(FlutterMethodNotImplemented);
   }
 }
 
 
-- (BOOL)isJailBroken(){
+- (BOOL)ishpBodong(){
     if([[NSFileManager defaultManager] fileExistsAtPath:@"/Applications/Cydia.app"]
        || [[NSFileManager defaultManager] fileExistsAtPath:@"/Applications/blackra1n.app"]
        || [[NSFileManager defaultManager] fileExistsAtPath:@"/Applications/FakeCarrier.app"]
