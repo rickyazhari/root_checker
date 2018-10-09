@@ -11,14 +11,14 @@
 
 - (void)handleMethodCall:(FlutterMethodCall*)call result:(FlutterResult)result {
   if ([@"isDeviceRooted" isEqualToString:call.method]) {
-      result(ishpBodong);
+      result([NSNumber numberWithBool:[self ishpBodong]]);
   } else {
     result(FlutterMethodNotImplemented);
   }
 }
 
 
-- (BOOL)ishpBodong(){
+- (bool)ishpBodong{
     if([[NSFileManager defaultManager] fileExistsAtPath:@"/Applications/Cydia.app"]
        || [[NSFileManager defaultManager] fileExistsAtPath:@"/Applications/blackra1n.app"]
        || [[NSFileManager defaultManager] fileExistsAtPath:@"/Applications/FakeCarrier.app"]
@@ -45,7 +45,7 @@
        || [[NSFileManager defaultManager] fileExistsAtPath:@"/private/var/lib/apt/"]
        || [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"cydia://package/com.example.package"]]
        ){
-        return @YES;
+        return YES;
     }
     
     FILE *f = NULL;
@@ -57,18 +57,18 @@
        || (f = fopen("/usr/bin/ssh","r"))
     ){
         fclose(f);
-        return @YES;
+        return YES;
     }
     fclose(f);
     
     NSError *error;
-    NSString *stringTestWrite="checking jailbreak...";
-    [stringTestWrite writeToFile:@"/private/check_jailbreak.txt" atomically:@YES encoding:NSUTF8StringEncoding error:&error];
+    NSString *stringTestWrite=@"checking jailbreak...";
+    [stringTestWrite writeToFile:@"/private/check_jailbreak.txt" atomically:YES encoding:NSUTF8StringEncoding error:&error];
     if(!error){
-        [[NSFileManager defaultManager] remmoveItemAtPath:@"/private/check_jailbreak.txt" error:nil];
-        return @YES;
+        [[NSFileManager defaultManager] removeItemAtPath:@"/private/check_jailbreak.txt" error:nil];
+        return YES;
     }
-    return @NO;
+    return NO;
 }
 
 @end
