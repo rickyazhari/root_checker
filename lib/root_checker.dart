@@ -8,5 +8,4 @@ class RootChecker {
   static Future<bool> get isDeviceRooted async{
     return await _channel.invokeMethod('isDeviceRooted');
   }
-
 }
